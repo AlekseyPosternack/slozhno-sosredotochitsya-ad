@@ -1,5 +1,247 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  background: var(--page-dark) fixed;
+  font: var(--weight-normal) var(--text-size)/var(--line) var(--font-main);
+  color: var(--main-text);
+}
+
+.header {
+  background: var(--cover-dark) center/cover no-repeat fixed;
+  padding: var(--space-sm);
+  display: grid;
+  grid-template-rows: 1fr min-content 1fr auto;
+  align-items: center;
+  justify-items: end;
+  position: relative;
+}
+
+[class*="decorated"] {
+  height: 100vh;
+  min-height: 668px;
+  position: relative;
+}
+
+[class*="decorated"]::before {
+  content: "";
+  position: absolute;
+  left: var(--space-sm);
+  bottom: var(--space-sm);
+  width: 25px;
+  height: 25px;
+  border-left: 1px solid var(--main-red);
+  border-bottom: 1px solid var(--main-red);
+}
+
+[class*="decorated"]::after {
+  content: "";
+  position: absolute;
+  right: var(--space-sm);
+  top: var(--space-sm);
+  width: 25px;
+  height: 25px;
+  border-right: 1px solid var(--main-red);
+  border-top: 1px solid var(--main-red);
+}
+
+.header__rec {
+  position: absolute;
+  top: var(--space-sm);
+  right: calc(var(--space-sm) + 28px);
+  text-transform: uppercase;
+  color: var(--main-red);
+  visibility: var(--rec-vis);
+}
+
+.header__rec::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  top: 9px;
+  right: -18px;
+  border-radius: 50%;
+  background: var(--main-red);
+  box-shadow: 0 0 4px 4px var(--main-red);
+  visibility: var(--rec-vis);
+}
+
+.header__theme-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.header__theme-menu-button {
+  background: none;
+  border: none;
+  color: var(--main-red);
+  cursor: pointer;
+}
+
+.header__theme-menu-button:hover {
+  outline: 1px solid var(--hover-red);
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-bottom: 1px solid var(--main-red);
+}
+
+.header__theme-menu-button_active {
+  outline: 1px solid var(--main-red);
+  pointer-events: none;
+}
+
+.header__title {
+  color: var(--title-purple);
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  font-weight: var(--weight-bold);
+  line-height: 82.5%;
+  text-shadow: 4px 4px 0 var(--glow-pink);
+}
+
+.header__description {
+  width: 100%;
+  justify-self: end;
+  align-self: center;
+}
+
+.title-decor {
+  background: var(--bg-pink);
+  color: var(--text-dark);
+}
+
+.content {
+  display: grid;
+  gap: var(--gap-lg);
+  padding: var(--space-md) var(--space-sm);
+}
+
+.section {
+  display: grid;
+  gap: var(--gap-md);
+}
+
+.section__title {
+  color: var(--main-red);
+  font: var(--weight-bold) var(--text-size)/var(--line) var(--font-main);
+}
+
+.theme__text {
+  color: var(--main-text);
+  font: var(--weight-normal) var(--text-size)/var(--line) var(--font-main);
+}
+
+.section__themes {
+  display: grid;
+  gap: var(--gap-md);
+}
+
+.theme {
+  display: grid;
+  gap: 10px;
+}
+
+.header__description,
+.section__themes > .section__title,
+.theme__title {
+  font: var(--weight-bold) var(--text-size)/var(--line) var(--font-main);
+}
+
+.third .theme .theme__title {
+  font-weight: var(--weight-normal);
+}
+
+.theme__text .research-link {
+  text-decoration: none;
+  text-shadow: 2px 2px var(--link-glow);
+}
+
+.theme__text .research-link:hover {
+  border-bottom: 1px solid var(--main-text);
+}
+
+.theme__text .research-link:focus-visible {
+  outline: 1px solid var(--main-text);
+}
+
+.article__images {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.article__images-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm);
+}
+
+.footer__title {
+  color: var(--title-purple);
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  font-weight: var(--weight-bold);
+  line-height: 82.5%;
+  text-shadow: 2px 2px 0 var(--glow-pink);
+}
+
+@media (768px <= width) {
+  :root {
+    --space-sm: 20px;
+    --space-md: 60px;
+    --gap-lg: 80px;
+  }
+
+  .first, .third {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .article__images {
+    gap: 20px;
+  }
+
+  .article__images-image:nth-child(1) { grid-column: 1/3; grid-row: 1; }
+  .article__images-image:nth-child(2) { grid-row: 1/3; grid-column: 3; }
+  .article__images-image:nth-child(3) { grid-column: 1; grid-row: 2/4; }
+  .article__images-image:nth-child(4) { grid-column: 2; grid-row: 2; }
+  .article__images-image:nth-child(5) { grid-column: 2/4; grid-row: 3; }
+
+  .footer__title,
+  .header__title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+
+  .header__title { justify-self: left; }
+  .header__description { width: 50%; }
+  .second .section__title { width: calc(33.333% - var(--gap-md)); }
+}
+
+@media (1024px <= width) {
+  .second .section__themes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .first, .third {
+    grid-template-columns: calc((100% - 2 * var(--gap-md)) / 3) 1fr;
+  }
+
+  .header__theme-menu {
+    justify-self: center;
+    align-self: start;
+  }
+
+  .header__theme-menu-list {
+    flex-direction: row;
+    gap: 36px;
+  }
 }

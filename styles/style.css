@@ -220,7 +220,7 @@
     grid-column: 3;
   }
 
-  .article__images-image:nth-child(3) { 
+  .article__images-image:nth-child(3) {
     grid-column: 1;
     grid-row: 2/4;
   }
@@ -229,7 +229,7 @@
     grid-column: 2;
     grid-row: 2;
   }
-  
+
   .article__images-image:nth-child(5) {
     grid-column: 2/4;
     grid-row: 3;
